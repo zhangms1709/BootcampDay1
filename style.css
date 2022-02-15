@@ -1,0 +1,24 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  /* Styles for the div that wraps the entire card */
+  .card {
+    box-shadow: 2px 2px 5px black;
+    border-radius: 20px;
+    width: 500px;
+    overflow: hidden;
+  }
+  
+  /* Styles for the card image (<img/) element */
+  .card img {
+    object-fit: cover;
+    overflow: hidden;
+    width: 500px;
+    border-radius: 20px;
+  }
+  
+  /* Styles for the div that wraps the text area of the card */
+  .card-text-box {
+    padding: 10px 10px 15px 150px;
+  }
