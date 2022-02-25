@@ -73,9 +73,12 @@ const theme2 = extendTheme({
 function Card() {
     const [input, setInput] = useState('')
     const [input2, setInput2] = useState('')
+    const [input3, setInput3] = useState('')
     const handleInputChange = (e) => setInput(e.target.value)
     const handleInputChange2 = (e) => setInput2(e.target.value)
+    const handleInputChange3 = (e) => setInput3(e.target.value)
     const isError = input === ''
+    const isError2 = input3 === ''
     return (
         <><>
         <ChakraProvider theme={theme2}></ChakraProvider>
@@ -91,6 +94,7 @@ function Card() {
         </Center>
         <ChakraProvider/>
         <ChakraProvider theme={theme}>
+            <form>
                 <Box p={8}>
                     <FormControl variant='floating' id='first-name'>
                         <Input placeholder=' ' id='first-name' type='first-name' value={input2}
@@ -114,8 +118,22 @@ function Card() {
                     </FormControl>
                     <Box m={[2, 3]} />
 
+                    <FormControl variant='floating' id='password' isRequired isInvalid={isError2}>
+                        <Input placeholder=' ' id='password' type='password' value={input3}
+                            onChange={handleInputChange3} />
+                        {/* It is important that the Label comes after the Control due to css selectors */}
+                        <FormLabel htmlFor='password'>Password</FormLabel>
+                        {!isError2 ? (
+                            <FormHelperText>
+                                Your password should have both upper and lower case letters.
+                            </FormHelperText>
+                        ) : (
+                            <FormErrorMessage>Password is required.</FormErrorMessage>
+                        )}
+                    </FormControl>
+                    <Box m={[2, 3]} />
                     <Stack direction='row' spacing={4}>
-                        <Button colorScheme='teal' variant='solid'>
+                        <Button colorScheme='teal' variant='solid' type="submit">
                             Submit
                         </Button>
                         <Button
@@ -124,10 +142,10 @@ function Card() {
                             colorScheme='teal'
                             variant='outline'
                         >
-                            submit
                         </Button>
                     </Stack>
                 </Box>
+                </form>
             </ChakraProvider>
         </></>
     )

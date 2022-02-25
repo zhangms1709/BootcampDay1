@@ -36,6 +36,6 @@ const NewPostModal: FC<Props> = ({isOpen, onClose}) => {
         </ModalContent>
       </Modal>
     //return ();
-}
+)}
 
 export default NewPostModal;
