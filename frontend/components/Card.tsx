@@ -99,7 +99,10 @@ function Card() {
                     <FormControl variant='floating' id='first-name'>
                         <Input placeholder=' ' id='first-name' type='first-name' value={input2}
                             onChange={handleInputChange2} />
-                        <FormLabel htmlFor='first-name'>First name</FormLabel>
+                        <FormLabel htmlFor='first-name'>Username</FormLabel>
+                        <FormHelperText>
+                                Your username will be visible to others, choose carefully.
+                            </FormHelperText>
                     </FormControl>
                     <Box m={[2, 3]} />
 
