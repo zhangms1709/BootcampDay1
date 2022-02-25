@@ -18,6 +18,31 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Routes
 // ====================================================================
 
+app.get('/hello', function(req, res){
+    res.send("Hello World!");
+ });
+
+ app.post('/hello', function(req, res){
+    res.send("You just called the post method at '/hello'!\n");
+ });
+
+ app.get('/', function(req, res) {
+    res.send('Hello World!')
+  });
+
+const admin = express()
+
+admin.on('mount', (parent) => {
+  console.log('Admin Mounted')
+  console.log(parent) // refers to the parent app
+})
+
+admin.get('/', (req, res) => {
+  res.send('Admin Homepage')
+})
+
+app.use('/admin', admin)
+
 // TODO: Implement a route handler that returns a list of all posts, ordered by date created.
 app.get("/posts", async (req, res) => {
     res.send("TODO: GET /posts");
@@ -68,12 +93,11 @@ app.delete("/posts/:postID/comments/:commentID", async (req, res) => {
     res.send("TODO: DELETE /posts/{postID}/comments");
 });
 
-
 // TODO: add more endpoints here!
 
 // Start the Express server.
 function start() {
-    const client = new MongoClient(process.env.ATLAS_URI);
+    const client = new MongoClient("mongodb+srv://zhangma:<password>@cluster0.grzb9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
     client.connect()
         .then(() => {
             console.log('Connected successfully to server');
@@ -82,7 +106,7 @@ function start() {
                 console.log(`server started at http://localhost:${port}`);
             });
         })
-        .catch((err) => {
+        .catch((err: any) => {
             console.log("error connecting to mongoDB!", err);
         });
 }
