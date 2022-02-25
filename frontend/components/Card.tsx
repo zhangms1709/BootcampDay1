@@ -10,7 +10,8 @@ import {
     Input,
     extendTheme,
     Stack,
-    Heading
+    Heading,
+    Center
 } from '@chakra-ui/react'
 import { SetStateAction, useState } from "react";
 import '@fontsource/raleway/400.css'
@@ -78,10 +79,16 @@ function Card() {
     return (
         <><>
         <ChakraProvider theme={theme2}></ChakraProvider>
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' p="4px">
+        <Center>
+        <Box maxW='sm' borderWidth='1px' borderRadius='lg' p="4px" borderColor='white'>
             <Heading fontSize='5xl'>Dear Blueno,</Heading>
-            <Text fontSize='1xl'>I want to tell you the struggles of my soul</Text>
+            <Box m={[2, 3]} />
+            <Text fontSize='1xl'>I want to tell you the struggles of my soul. Why? To be means to communicate. 
+            To be means to be for another, and through the other, for oneself. 
+            A person has no internal sovereign territory, he is wholly and always on the boundary; 
+            looking inside himself, he looks into the eyes of another or with the eyes of another</Text>
         </Box>
+        </Center>
         <ChakraProvider/>
         <ChakraProvider theme={theme}>
                 <Box p={8}>
@@ -105,6 +112,8 @@ function Card() {
                             <FormErrorMessage>Email is required.</FormErrorMessage>
                         )}
                     </FormControl>
+                    <Box m={[2, 3]} />
+
                     <Stack direction='row' spacing={4}>
                         <Button colorScheme='teal' variant='solid'>
                             Submit
