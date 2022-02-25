@@ -1,6 +1,7 @@
 import express from "express";
 import {Db, MongoClient, ObjectId} from "mongodb";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 const app = express();
 const port = 8080; // default port to listen
@@ -9,6 +10,9 @@ let db: Db;
 // middleware
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors({
+    origin: 'http://localhost:3000'
+}))
 
 // Route definitions
 
@@ -143,12 +147,9 @@ app.delete("/posts/:postID/comments/:commentID", async (req, res) => {
     }
 });
 
-
-// ... add more endpoints here!
-
 // Start the Express server.
 function start() {
-    const client = new MongoClient("mongodb+srv://zhangma:<password>@cluster0.grzb9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+    const client = new MongoClient("mongodb+srv://zhangma:QNOgVuPgvlCdAULK@cluster0.grzb9.mongodb.net/Cluster0?retryWrites=true&w=majority");
     client.connect()
         .then(() => {
             console.log('Connected successfully to server');

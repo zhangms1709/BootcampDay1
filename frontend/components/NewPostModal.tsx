@@ -17,12 +17,21 @@ interface Props {
 }
 
 const NewPostModal: FC<Props> = ({isOpen, onClose}) => {
-    // TODO: Fill out this handleSubmit function!
     function handleSubmit(e: any) {
-        
+        e.preventDefault()
+        axios.post('http://localhost:8080/posts', {
+                title: e.target.title.value,
+                body: e.target.body.value,
+                createdAt: new Date(),
+            })
+              .then((response) => {
+                  alert("Post created!")
+              })
+              .catch((error) => {
+                    alert("Issue creating post :(")
+              })
     }
-
-    // TODO: Implemnt a NewPostModal!
+ 
     return (<Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -35,7 +44,7 @@ const NewPostModal: FC<Props> = ({isOpen, onClose}) => {
             </form>
         </ModalContent>
       </Modal>
-    //return ();
-)}
+      );
+}
 
 export default NewPostModal;

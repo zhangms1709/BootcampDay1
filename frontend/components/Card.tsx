@@ -16,16 +16,6 @@ import {
 import { SetStateAction, useState } from "react";
 import '@fontsource/raleway/400.css'
 import '@fontsource/open-sans/700.css'
-/**
-function Card() {
-    return  <div>
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' p="4px">
-        <Text fontSize='5xl'>Dear Blueno,</Text>
-        <Button colorScheme='blue'>Help</Button>
-        </Box>
-    </div>
-}
-*/
 
 const activeLabelStyles = {
     transform: 'scale(0.85) translateY(-24px) translateX(-10px)',
@@ -74,9 +64,9 @@ function Card() {
     const [input, setInput] = useState('')
     const [input2, setInput2] = useState('')
     const [input3, setInput3] = useState('')
-    const handleInputChange = (e) => setInput(e.target.value)
-    const handleInputChange2 = (e) => setInput2(e.target.value)
-    const handleInputChange3 = (e) => setInput3(e.target.value)
+    const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => setInput(e.target.value)
+    const handleInputChange2 = (e: { target: { value: SetStateAction<string>; }; }) => setInput2(e.target.value)
+    const handleInputChange3 = (e: { target: { value: SetStateAction<string>; }; }) => setInput3(e.target.value)
     const isError = input === ''
     const isError2 = input3 === ''
     return (

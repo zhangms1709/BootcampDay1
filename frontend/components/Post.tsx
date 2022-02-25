@@ -10,7 +10,7 @@ interface Props {
 
 const Post: FC<Props> = ({title, body, postedAt}) => {
     // TODO: Implemnt a Post!
-    return ();
+    return <div>"hi"</div>;
 }
 
 export default Post;
